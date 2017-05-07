@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Thomaswelton\LaravelGravatar\Facades\Gravatar;
 
 use Illuminate\Http\Request;
 

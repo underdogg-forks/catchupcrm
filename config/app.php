@@ -169,6 +169,9 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        FloatingPoint\Stylist\StylistServiceProvider::class,
+        Caffeinated\Themes\ThemesServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         //
 
         /*
@@ -230,10 +233,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
-
-
-
+        'Theme' => Caffeinated\Themes\Facades\Theme::class,
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
 
 
     ],
