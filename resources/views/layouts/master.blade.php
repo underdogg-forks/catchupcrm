@@ -19,7 +19,12 @@
     <link href="{{ asset("themes/gentelella/css/gentelella.min.css") }}" rel="stylesheet">
 
     @stack('stylesheets')
-
+    <style>
+        .container {
+            background-color: #d5d5d5;
+            font-weight: 100;
+            height: 100vh;
+        }</style>
 </head>
 
 <body class="nav-md">

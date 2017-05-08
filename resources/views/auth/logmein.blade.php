@@ -1,10 +1,14 @@
 @extends('layouts.public')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+
+                <!-- Authentication Links -->
+                @if (Auth::guest())
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
@@ -61,6 +65,12 @@
                         </div>
                     </form>
                 </div>
+                @else
+                    <div class="panel-heading">Dashboard</div>
+                    <div class="panel-body">
+                        You are logged in!
+                    </div>
+                @endif
             </div>
         </div>
     </div>
