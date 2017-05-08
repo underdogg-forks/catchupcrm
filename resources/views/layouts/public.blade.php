@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
 
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
     <!-- Styles -->
     <style>
         html, body {
@@ -71,8 +82,7 @@
             @if (Auth::check())
                 <a href="{{ url('/home') }}">Home</a>
             @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
+                <a href="#">LogMein</a>
             @endif
         </div>
     @endif
@@ -82,14 +92,10 @@
             Laravel
         </div>
 
-        <div class="links">
-            <a href="https://laravel.com/docs">Documentation</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
+        @yield('content')
     </div>
 </div>
+<!-- Scripts -->
+<script src="/js/app.js"></script>
 </body>
 </html>

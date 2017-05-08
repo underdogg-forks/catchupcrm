@@ -11,15 +11,15 @@
 |
 */
 //Auth::routes();
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::auth();
 
+/*
+ * All routes protected by 'auth' middleware
+ **/
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return view('auth.logmein');
+    });
 
     Route::get('/home', 'HomeController@index');
 
@@ -41,6 +41,3 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('itemCRUD2/{id}', ['as' => 'itemCRUD2.update', 'uses' => 'ItemCRUD2Controller@update', 'middleware' => ['permission:item-edit']]);
     Route::delete('itemCRUD2/{id}', ['as' => 'itemCRUD2.destroy', 'uses' => 'ItemCRUD2Controller@destroy', 'middleware' => ['permission:item-delete']]);
 });
-
-
-Route::get('/home', 'HomeController@index');
