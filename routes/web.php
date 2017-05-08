@@ -13,6 +13,11 @@
 //Auth::routes();
 Route::auth();
 
+Route::get('/logmein', function () {
+    return view('auth.logmein');
+});
+
+
 /*
  * All routes protected by 'auth' middleware
  **/
