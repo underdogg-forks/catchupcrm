@@ -1,0 +1,79 @@
+.row-box .content {
+   padding-right: 30px;
+}
+.side-menu {
+  list-style: outside none none;
+  font-size: 0.9em;
+  margin-bottom: 40px;
+  li {
+    position: relative;
+    i {
+      position: absolute;
+      font-size: 20px;
+      left: -25px;
+      top: 5px;
+    }
+  }
+
+  li.header {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  li.active a {
+    color: #999;
+    border: none;
+  }
+}
+
+.anchor {
+  display: inline-block;
+  outline: medium none;
+  text-decoration: none;
+  opacity: 0.5;
+  border: none;
+  &:before {
+    content: '#';
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.documentation {
+  h2 {
+    margin: 0.5em 0 0.1em 0;
+    font-size: 2.15em;
+  }
+  h3 {
+    margin: 0.5em 0 0.5em 0;
+  }
+  h4 {
+    font-size: 1.4em;
+    margin: 0.5em 0 0.5em 0;
+  }
+  p {
+    margin: 0.2em 0 0.4em 0;
+  }
+  ul {
+    margin: 0 0 0 1.5em;
+    li {
+      padding-left: 0;
+    }
+  }
+  blockquote {
+    background: #f4645f;
+    color: #fff;
+    border-radius: 3px;
+    margin: 10px 0 20px;
+    padding: 10px 15px;
+    border-left: none;
+    font-style: normal;
+    font-weight: 400;
+  }
+}

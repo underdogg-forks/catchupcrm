@@ -12,7 +12,18 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'My Application',
+
+
+    /*
+   |--------------------------------------------------------------------------
+   | Application cache
+   |--------------------------------------------------------------------------
+   | Set this to true to use the cache decorators, this will greatly improve
+   | the application speed and performance
+   */
+    'cache' => env('APP_CACHE', false),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +63,17 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Allow static translations to be editable via GUI
+    |--------------------------------------------------------------------------
+    | Enabling this will have slight performance hit,
+    | about 20 to 50ms page load time increase.
+    */
+    'translations-gui' => false,
+
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +205,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
+
+        //Modules\Core\Providers\AsgardServiceProvider::class,
+
+        App\Providers\RouteServiceProvider::class,
     ],
 
     /*
@@ -235,7 +262,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
-
+        'Module' => Nwidart\Modules\Facades\Module::class,
 
     ],
 

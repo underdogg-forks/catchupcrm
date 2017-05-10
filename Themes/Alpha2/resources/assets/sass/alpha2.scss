@@ -1,0 +1,17 @@
+pre, code {
+  font-size: 0.8em;
+}
+
+code, code[class*="language-"], pre[class*="language-"] {
+  margin-left: -7px;
+  background: none repeat scroll 0% 0% #F5F5F5 !important;
+  color: #777777 !important;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  border-radius: 0.3em !important;
+  border: none !important;
+  font-size: 0.88em;
+  text-shadow: none;
+}
+:not(pre)>code[class*=language-], pre[class*=language-] {
+  background: #F5F5F5 !important;
+}

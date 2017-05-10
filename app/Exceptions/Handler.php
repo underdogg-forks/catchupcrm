@@ -3,6 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -27,7 +31,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -38,20 +42,72 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
+        //dd($exception);
+        /*if (config('app.debug') === false) {
+            return $this->handleExceptions($e);
+        }
+
+        if ($e instanceof AuthenticationException) {
+            return redirect('/');
+        }
+
+        //AuthenticationException
+        if ($e instanceof TokenMismatchException) {
+            return redirect()->back()
+                ->withInput($request->except('password'))
+                ->withErrors(trans('core::core.error token mismatch'));
+        }*/
+
         return parent::render($request, $exception);
     }
+
+
+    protected function convertExceptionToResponse(Exception $e)
+    {
+
+        $whoops = new \Whoops\Run;
+        if (request()->wantsJson()) {
+            $whoops->pushHandler(new \Whoops\Handler\JsonResponseHandler());
+        } else {
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        }
+
+        return response()->make(
+            $whoops->handleException($e),
+            method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+            method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+        );
+
+
+        //return parent::convertExceptionToResponse($e);
+    }
+
+
+    private function handleExceptions($e)
+    {
+        if ($e instanceof ModelNotFoundException) {
+            return response()->view('errors.404', [], 404);
+        }
+
+        if ($e instanceof NotFoundHttpException) {
+            return response()->view('errors.404', [], 404);
+        }
+
+        return response()->view('errors.500', [], 500);
+    }
+
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Auth\AuthenticationException $exception
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)
