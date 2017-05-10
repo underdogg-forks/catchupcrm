@@ -65,7 +65,7 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->registerCommands();
         $this->registerServices();
-        $this->setLocalesConfigurations();
+        //$this->setLocalesConfigurations();
     }
 
     /**

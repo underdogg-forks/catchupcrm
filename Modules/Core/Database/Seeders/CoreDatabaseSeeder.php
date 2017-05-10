@@ -15,5 +15,7 @@ class CoreDatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        //$this->call(__NAMESPACE__.'\ConfigTableSeeder');
+        $this->call(__NAMESPACE__.'\NavTableSeeder');
     }
 }

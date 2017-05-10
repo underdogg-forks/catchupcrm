@@ -13,7 +13,33 @@ return [
     |
     */
 
-    'active' => 'Flatly',
+    'active' => env('ACTIVE_THEME', 'Flatly'),
+
+    'public' => '_layouts.public',
+    'front' => '_layouts.front',
+    'back' => '_layouts.back',
+
+
+    'manager' => '_layouts.manager',
+    'agent' => '_layouts.agent',
+    'client' => '_layouts.client',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Templating Engine
+    |--------------------------------------------------------------------------
+    |
+    | Switch between using either Blade or Twig as youe templating engine. To
+    | use Twig, be sure to install the twigbridge package and register its
+    | service provider BEFORE the Caffeinated Themes service provider.
+    |
+    | Available Settings: "blade", "twig"
+    |
+    */
+
+    'engine' => 'blade',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +74,7 @@ return [
         |
         */
 
-        'base' => 'themes',
+        'base' => base_path('Themes'),
 
         /*
         |----------------------------------------------------------------------

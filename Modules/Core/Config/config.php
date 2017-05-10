@@ -1,6 +1,13 @@
 <?php
 
 return [
+
+
+    'name' => 'Core',
+    'table-prefix' => '',
+    'date-format' => 'd-m-Y h:i:s',
+    'crm-index' => '\App\Modules\Core\Http\Controllers\Frontend\FrontendController@getHomepage',
+
     /*
     |--------------------------------------------------------------------------
     | These are the core modules that should NOT be disabled under any circumstance

@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -125,7 +125,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'SomeRandomString'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -205,7 +205,25 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Development Service Providers...
+         */
+        //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
+
+        /*
+         * Service Providers...
+         */
         Nwidart\Modules\LaravelModulesServiceProvider::class,
+
+        //Caffeinated\Themes\ThemesServiceProvider::class,
+        //Former\FormerServiceProvider::class,
+        //Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+        //Conner\Tagging\Providers\TaggingServiceProvider::class,
+        //Collective\Html\HtmlServiceProvider::class,
+        //Watson\BootstrapForm\BootstrapFormServiceProvider::class,
+        //yajra\Datatables\DatatablesServiceProvider::class,
+        //Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
         //Modules\Core\Providers\AsgardServiceProvider::class,
 
