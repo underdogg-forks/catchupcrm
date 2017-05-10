@@ -7,26 +7,48 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                <li class="dropdown user user-menu">
+                    <a href="#" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
                         {{ Auth::user()->name }}
                         <span class=" fa fa-angle-down"></span>
                     </a>
-                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="javascript:;"> Profile</a></li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="badge bg-red pull-right">50%</span>
-                                <span>Settings</span>
+
+
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <!-- User image -->
+                    <li class="user-header bg-light-blue">
+                        <img src="#" class="img-circle" alt="User Image" />
+                        <p>
+                                fullname
+                        </p>
+                    </li>
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                        <a href="javascript:;">
+                            <span class="badge bg-red pull-right">50%</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}</form>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="#" class="btn btn-default btn-flat">
+                                profile
                             </a>
-                        </li>
-                        <li><a href="javascript:;">Help</a></li>
-                        <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}</form>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-danger btn-flat">
+                                sign out
+                            </a>
+                        </div>
+                    </li>
+                </ul>
                 </li>
 
                 <li role="presentation" class="dropdown">
